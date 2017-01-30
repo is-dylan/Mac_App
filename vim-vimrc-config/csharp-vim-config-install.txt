@@ -1,0 +1,105 @@
+1  install vim-pathogen     #https://github.com/tpope/vim-pathogen
+
+Installation
+
+Install to ~/.vim/autoload/pathogen.vim. Or copy and paste:
+
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+If you're using Windows, change all occurrences of ~/.vim to ~\vimfiles.
+
+Runtime Path Manipulation
+
+Add this to your vimrc:
+
+execute pathogen#infect()
+If you're brand new to Vim and lacking a vimrc, vim ~/.vimrc and paste in the following super-minimal example:
+
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+Now any plugins you wish to install can be extracted to a subdirectory under ~/.vim/bundle, and they will be added to the 'runtimepath'. Observe:
+
+cd ~/.vim/bundle && \
+git clone https://github.com/tpope/vim-sensible.git
+Now sensible.vim is installed. If you really want to get crazy, you could set it up as a submodule in whatever repository you keep your dot files in. I don't like to get crazy.
+
+
+2   install  Vim-CSharp  	#https://github.com/OrangeT/vim-csharp
+
+Installation
+
+If you don't have a preferred installation method, I recommend installing pathogen.vim, and then simply copy and paste:
+
+OS X/Linux:
+
+cd ~/.vim/bundle
+git clone git://github.com/OrangeT/vim-csharp.git
+Windows:
+
+cd c:\users\[username]\vimfiles\bundle
+git clone git://github.com/OrangeT/vim-csharp.git
+
+
+3	install   omnisharp-vim		#https://github.com/OmniSharp/omnisharp-vim
+
+Installation
+
+pathogen.vim is the recommended way to install OmniSharp.
+
+OSX / Linux
+
+Requires a minimum of Mono 3.0.12 - If you absolutely must use mono 2.10 then checkout the mono-2.10.8 tag. Updating mono on ubuntu
+
+cd ~/.vim/bundle
+git clone https://github.com/OmniSharp/omnisharp-vim.git
+cd omnisharp-vim
+git submodule update --init --recursive
+cd server
+xbuild
+If you installed the package with Vundle, you still need to build the server as above.
+
+Note that if you have Mono installed outside of the "standard" paths (for example, if it is installed via Boxen where your homebrew root is not /usr/local/, you'll need to either add the path to the AssemblySearch.cs before building, or symlink your installation to one of the standard paths.
+
+If you are planning to use OmniSharp-Roslyn, run the following commands:
+
+cd ~/.vim/bundle/omnisharp-vim/omnisharp-roslyn
+./build.sh
+
+
+Windows
+
+c:\
+cd c:\Users\username\vimfiles\bundle
+git clone https://github.com/OmniSharp/omnisharp-vim.git
+cd omnisharp-vim
+git submodule update --init --recursive
+cd server
+msbuild
+Install Python
+
+Install last version of 2.7 series (Python 2.7.8 at the time of this writing). Make sure that you pick correct version of Python to match the architecture of Vim. For example, if you installed Vim using the default Windows installer, you will need to install the x86 (32 bit!) version of Python.
+
+Verify that Python is working inside Vim with
+
+:echo has('python')
+(optional) Install vim-dispatch
+
+The vim plugin vim-dispatch is needed to make OmniSharp start the server automatically and for running asynchronous builds. Use your favourite way to install it.
+
+(optional) Install syntastic
+
+The vim plugin syntastic is needed for displaying code issues and syntax errors. Use your favourite way to install it.
+
+(optional) Install ctrlp.vim, unite.vim or fzf.vim
+
+If you want to use the Code Actions, Find Type and Find Symbol features, you will need to install one of the following plugins:
+
+CtrlP
+unite.vim
+fzf.vim
+If you have installed more than one, you can choose one by g:OmniSharp_selector_ui variable.
+
+let g:OmniSharp_selector_ui = 'unite'  " Use unite.vim
+let g:OmniSharp_selector_ui = 'ctrlp'  " Use ctrlp.vim
+let g:OmniSharp_selector_ui = 'fzf'    " Use fzf.vim
