@@ -1,6 +1,147 @@
+"~/.vimrc (configuration file for vim only)
 
+" Encoding related
+set fileencodings=utf-8,gb2312,gbk,gb18030
+set termencoding=utf-8
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CTags的设定
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"autocmd FileType java set tags+=D:\tools\java\tags
+"autocmd FileType h,cpp,cc,c set tags+=D:\tools\cpp\tags
+"设置tags
+set tags=tags
+"set autochdir
+
+"set ctags 标签路径
+set tags+=/usr/include/sys.tags
+" set tags+=/usr/include/c++/v1/clangcpp.tags
+
+"标准库命名空间
+let OmniCpp_DefaultNamespaces = ["_GLIBCXX_STD"]
+set tags+=/usr/include/c++/6/stdcpp.tags
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+source $VIMRUNTIME/ftplugin/man.vim " 启用:Man命令查看各类man信息
+nmap <Leader>man :Man 3 <cword><CR> " 定义:Man命令查看各类man信息的快捷键
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vundle begin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype off                " required!
+
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" vim-scripts repos
+
+"  Improved C++ STL syntax highlighting
+Bundle 'STL-improved'
+
+" Displays tags in a window, ordered by class etc, i used it instead of taglist
+Bundle 'majutsushi/tagbar'
+Bundle 'wesleyche/SrcExpl'
+
+" recommend fetch it from https://github.com/tczengming/autoload_cscope.vim.git which support c and cpp
+Bundle 'tczengming/autoload_cscope.vim'
+
+" CmdlineComplete E.g: you want to search for "elephant" in the buffer, just type /ele and
+" press Ctrl-P. So long as "elephant" is in the buffer, you will get "ele"
+" completed into "elephant".
+Bundle 'CmdlineComplete'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/ListToggle'
+
+"Code snippets engine for Vim
+Bundle 'xptemplate'
+
+Bundle 'DoxygenToolkit.vim'
+
+" C/C++ header files should be guarded against multiple inclusions using preprocessor directives
+Bundle 'tczengming/headerGatesAdd.vim'
+
+Bundle 'genutils'
+Bundle 'lookupfile'
+
+" Fuzzy file, buffer, mru, tag, ... finder with regexp support.
+Bundle 'kien/ctrlp.vim'
+
+" Fast file navigation
+Bundle 'wincent/Command-T'
+
+" Preview the definition of variables or functions in a preview window
+Bundle 'autopreview'
+
+" Echo the function declaration in the command line for C/C++
+Bundle 'echofunc.vim'
+
+Bundle 'grep.vim'
+Bundle 'a.vim'
+Bundle 'The-NERD-Commenter'
+Bundle 'The-NERD-tree'
+
+" Under linux need exec 'dos2unix ~/.vim/bundle/QFixToggle/plugin/qfixtoggle.vim'
+"Bundle 'QFixToggle'
+
+Bundle 'Color-Sampler-Pack'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'txt.vim'
+
+Bundle 'mru.vim'
+Bundle 'YankRing.vim'
+
+Bundle 'tpope/vim-surround.git'
+Bundle 'ShowMarks'
+
+" Display error marks on line which contain errors after compilation
+Bundle 'cuteErrorMarker'
+
+"Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
+
+Bundle "vim-scripts/taglist.vim"
+
+Bundle 'fholgado/minibufexpl.vim'
+
+Bundle 'Lokaltog/vim-powerline'
+
+Bundle 'kien/rainbow_parentheses.vim'
+
+Bundle 'nathanaelkane/vim-indent-guides'
+
+Bundle 'bronson/vim-trailing-whitespace'
+
+Bundle 'vim-scripts/matchit.zip'
+
+Bundle 'SirVer/ultisnips'
+
+Bundle 'scrooloose/nerdcommenter'
+
+Bundle 'tpope/vim-repeat'
+
+Bundle 'Raimondi/delimitMate'
+
+Bundle "godlygeek/tabular"
+
+Bundle 'scrooloose/syntastic'
+
+Bundle 'vim-scripts/TaskList.vim'
+
+Bundle 'vim-scripts/vimwiki'
+
+Bundle "mileszs/ack.vim"
 
 Bundle "dyng/ctrlsf.vim"
 
@@ -595,8 +736,8 @@ func SetTemplate()
     if &filetype == 'sh'
         call setline(1,"\#########################################################################")
         call append(line("."), "\# File Name: ".expand("%"))
-        call append(line(".")+1, "\# Author: xuyl")
-        call append(line(".")+2, "\# mail: xuylAurthur@163.com")
+        call append(line(".")+1, "\# Author: is-dylan")
+        call append(line(".")+2, "\# mail: damon.fu@qq.com")
         call append(line(".")+3, "\# Created Time: ".strftime("%c"))
         call append(line(".")+4, "\#########################################################################")
         call append(line(".")+5, "\#!/bin/bash")
